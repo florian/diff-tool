@@ -1,6 +1,14 @@
 # Diffing Tool
 
 Diffing tools show you what changed between two versions of a file.
+For example, given these two input files:
+
+![Two files with different contents](img/files.png)
+
+The diff between them would show you what changed:
+
+![Diffing result](img/diff.png)
+
 You probably know this from code review tools, e.g. the one from GitHub.
 I decided to implement my own diffing tool for fun. :)
 
