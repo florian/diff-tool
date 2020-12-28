@@ -1,7 +1,7 @@
 """A tool for diffing two given files.
 
 Example usage:
-    $ python diff.py file1.txt file2.txt
+    $ python3 diff.py file1.txt file2.txt
 
 There are optional flags for hiding removals or additions and for showing line
 numbers.
