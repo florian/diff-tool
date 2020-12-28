@@ -2,17 +2,17 @@
 
 from dataclasses import dataclass
 
-@dataclass
+@dataclass(frozen=True)
 class Addition:
     """Represents an addition in a diff."""
     content: str
 
-@dataclass
+@dataclass(frozen=True)
 class Removal:
     """Represents a removal in a diff."""
     content: str
 
-@dataclass
+@dataclass(frozen=True)
 class Unchanged:
     """Represents something unchanged in a diff."""
     content: str
@@ -47,11 +47,10 @@ def diff(text1, text2):
     Unchanged elements.
     """
     lcs = _compute_longest_common_subsequence(text1, text2)
+    results = []
 
     i = len(text1)
     j = len(text2)
-
-    results = []
 
     while i != 0 or j != 0:
         # If we reached the end of text1 (i == 0) or text2 (j == 0), then we

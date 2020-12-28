@@ -3,34 +3,32 @@
 Example usage:
     $ python3 diff.py file1.txt file2.txt
 
-There are optional flags for hiding removals or additions and for showing line
-numbers.
+There are also some optional flags below.
 """
 
 from argparse import ArgumentParser
 from differ import diff
-from visualization import visualize
+from visualization import visualize_unified, visualize_sxs
 
-def _parse_args():
+def _setup_arg_parser():
+    """Sets up the command line argument parser."""
     parser = ArgumentParser(description="A tool for diffing.")
 
     parser.add_argument("file1", help="The original file to diff.")
     parser.add_argument("file2", help="The updated file to diff.")
 
-    parser.add_argument("--hide_removals",
+    parser.add_argument("--unified_view",
                         default=False,
                         action='store_true',
-                        help="If set, removals are not shown.")
-    parser.add_argument("--hide_additions",
-                        default=False,
-                        action='store_true',
-                        help="If set, additions are not shown.")
+                        help="If set, the diff is shown in one view. "
+                        "Otherwise they are shown in a split view.")
     parser.add_argument("--show_line_numbers",
                         default=False,
                         action='store_true',
-                        help="If set, line numbers are not shown.")
+                        help="If set, line numbers are not shown. "
+                        "This mostly useful for the split view.")
 
-    return parser.parse_args()
+    return parser
 
 def _read_lines_from_file(path):
     """Returns the lines without trailing new lines read from the given path."""
@@ -38,16 +36,17 @@ def _read_lines_from_file(path):
         return [line for line in f.read().splitlines()]
 
 def main():
-    args = _parse_args()
+    args = _setup_arg_parser().parse_args()
 
     lines1 = _read_lines_from_file(args.file1)
     lines2 = _read_lines_from_file(args.file2)
 
-    visualize(diff(lines1, lines2),
-              show_removals=not args.hide_removals,
-              show_additions=not args.hide_additions,
-              show_line_numbers=args.show_line_numbers,
-    )
+    diff_result = diff(lines1, lines2)
+
+    if args.unified_view:
+        visualize_unified(diff_result, args.show_line_numbers)
+    else:
+        visualize_sxs(diff_result, args.show_line_numbers)
 
 if __name__ == '__main__':
     main()
