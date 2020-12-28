@@ -30,7 +30,7 @@ def _format_diff_lines(diff, pad=0, show_removals=True,
     prefix_format = f"[%.{num_digits}d] "
 
     line_num = 1
-    spacing = "  " * 2
+    spacing = " " * 2
     # +1 to account for "+" and "-".
     hidden_spacing = pad + len(spacing) + 1
 
@@ -120,6 +120,6 @@ def visualize_sxs(diff, show_line_numbers):
                                      show_additions=True,
                                      show_line_numbers=show_line_numbers)
 
-    spacing = " " * 4
+    spacing = " " * 3
     for left, right in zip(left_lines, right_lines):
         print(f"{left}{spacing}|{spacing}{right}")
