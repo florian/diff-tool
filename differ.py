@@ -53,7 +53,7 @@ def diff(text1, text2):
 
     results = []
 
-    while i != 0 and j != 0:
+    while i != 0 or j != 0:
         # If we reached the end of text1 (i == 0) or text2 (j == 0), then we
         # just need to print the remaining additions and removals.
         if i == 0:
