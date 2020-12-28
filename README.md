@@ -12,4 +12,10 @@ To show the diff between `file1` and `file2`:
 $ python3 diff.py file1.txt file2.txt
 ```
 
-There are several optional flags.
+There are several optional flags:
+
+| Flag                | Description                     | Default                  |
+| :-------------------|:--------------------------------|:-------------------------|
+| `--hide_removals`   | If set, removals are hidden.    | Removals are shown       |
+| `--hide_additions`  | If set, additions are hidden.   | Additions are shown.     |
+| `show_line_numbers` | If set, line numbers are shown. | Line numbers are hidden. |
