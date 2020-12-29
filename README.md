@@ -11,6 +11,7 @@ The diff between them would show you what changed:
 
 You probably know this from code review tools, e.g. the one from GitHub.
 I decided to implement my own diffing tool for fun. :)
+There's also a [blog post](https://florian.github.io/diffing) describing how this works.
 
 ## Usage
 
